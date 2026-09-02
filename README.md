@@ -94,6 +94,8 @@ pip install -e .
 
 Download the two raw counts matrices from GEO into `data/raw/`
 
+For an exact reproduction of the environment used in this project (pinned package versions), use `environment-lock.yml` instead of `environment.yml`.
+
 ## Reproducing the Analysis
 
 Run the notebooks in order, 01 through 06. Each notebook loads its inputs from `data/processed/` or `results/tables/`, so they can be run independently once the prior notebook's outputs exist.
