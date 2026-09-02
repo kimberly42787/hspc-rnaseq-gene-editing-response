@@ -63,6 +63,7 @@ Full results and discussion: [`notebooks/06_results_writeup.ipynb`](notebooks/06
 
 ## Repository Structure
 
+```
 ├── config/ # project configuration (paths, design, thresholds)
 ├── data/
 │ ├── raw/ # GEO featureCounts matrices (not tracked)
@@ -79,6 +80,7 @@ Full results and discussion: [`notebooks/06_results_writeup.ipynb`](notebooks/06
 │ ├── figures/
 │ └── tables/
 └── tests/ # pytest test suite
+```
 
 ## Setup
 
