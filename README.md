@@ -63,22 +63,28 @@ Full results and discussion: [`notebooks/06_results_writeup.ipynb`](notebooks/06
 
 ## Repository Structure
 
-├── config/ # project configuration (paths, design, thresholds)
+## Repository Structure
+
+\`\`\`
+├── config/                  # project configuration (paths, design, thresholds)
 ├── data/
-│ ├── raw/ # GEO featureCounts matrices (not tracked)
-│ └── processed/ # filtered counts, metadata (not tracked)
-├── src/hspc_response/ # installable package: io, qc, DE, enrichment, rescue, plotting
+│   ├── raw/                 # GEO featureCounts matrices (not tracked)
+│   └── processed/           # filtered counts, metadata (not tracked)
+├── src/hspc_response/       # installable package: io, qc, DE, enrichment, rescue, plotting
 ├── notebooks/
-│ ├── 01_data_loading_and_qc.ipynb
-│ ├── 02_reproduction_differential_expression.ipynb
-│ ├── 03_reproduction_enrichment.ipynb
-│ ├── 04_extension_rescue_classification.ipynb
-│ ├── 05_extension_mechanism_split.ipynb
-│ └── 06_results_writeup.ipynb
+│   ├── 01_data_loading_and_qc.ipynb
+│   ├── 02_reproduction_differential_expression.ipynb
+│   ├── 03_reproduction_enrichment.ipynb
+│   ├── 04_extension_rescue_classification.ipynb
+│   ├── 05_extension_mechanism_split.ipynb
+│   └── 06_results_writeup.ipynb
 ├── results/
-│ ├── figures/
-│ └── tables/
-└── tests/ # pytest test suite
+│   ├── figures/
+│   └── tables/
+└── tests/                   # pytest test suite
+\`\`\`
+
+## Setup
 
 ## Setup
 
