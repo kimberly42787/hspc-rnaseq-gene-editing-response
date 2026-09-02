@@ -1,0 +1,24 @@
+name: hspc-rescue
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - scipy
+  - scikit-learn
+  - seaborn
+  - matplotlib
+  - pyyaml
+  - pytest
+  - pytest-cov
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+      - pydeseq2
+      - gseapy
+      - mygene
+      - matplotlib-venn
