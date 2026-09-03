@@ -1,4 +1,4 @@
-# CRISPR-Cas9/AAV6 Gene Editing in HSPCs: Reproduction and Extension
+# RNA-seq Analysis of CRISPR-Cas9/AAV6 Gene Editing in HSPCs: Reproduction and Extension
 
 Independent computational reproduction and extension of Conti et al. (2025), which found that CRISPR-Cas9/AAV6-mediated gene editing induces a p53/DNA-damage-response and NF-κB-driven inflammatory program in human hematopoietic stem and progenitor cells (HSPCs), and that the IL-1 receptor antagonist Anakinra mitigates this response.
 
