@@ -1,0 +1,90 @@
+# -----------------------------------------------------------------------------
+# Paths
+# -----------------------------------------------------------------------------
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  results_dir: results
+  figures_dir: results/figures
+  tables_dir: results/tables
+
+  counts_24h: data/raw/GSE244247_featureCounts_results_24h_GE_GEANAK_RNP_NEG.txt.gz
+  counts_96h: data/raw/GSE244248_featureCounts_results_96h_GE_GEANAK_RNP_NEG.txt.gz
+
+  counts_24h_processed: data/processed/counts_24h.csv
+  metadata_24h: data/processed/metadata_24h.csv
+
+  counts_96h_processed: data/processed/counts_96h.csv
+  metadata_96h: data/processed/metadata_96h.csv
+
+  counts_24h_filtered: data/processed/counts_24h_filtered.csv
+  counts_96h_filtered: data/processed/counts_96h_filtered.csv
+
+# -----------------------------------------------------------------------------
+# Experimental design
+# -----------------------------------------------------------------------------
+design:
+  formula: "~condition"
+  reference_levels:
+    condition: RNP_NEG
+  conditions: ["RNP_NEG", "GE", "GE_ANAK"]
+  timepoints: ["24h", "96h"]
+
+  # NOTE (caveat, not a parameter): Conti et al.'s Methods
+  # 24h and 96h samples were sequenced with DIFFERENT library prep protocols (24h = reverse paired-end; 96h = unstranded single-end).
+  # Any timepoint or condition:timepoint interaction result is therefore confounded with sequencing protocol, not purely biological time.
+
+  contrasts:
+    - name: "GE_vs_RNP_NEG"
+      numerator: "GE"
+      denominator: "RNP_NEG"
+    - name: "GE_ANAK_vs_GE"
+      numerator: "GE_ANAK"
+      denominator: "GE"
+
+    # GE_ANAK vs RNP_NEG was NOT explicitly tested in their code (only GE_ANAK_vs_GE appears)
+    # This is added for the rescue classification framework. 
+
+    - name: "GE_ANAK_vs_RNP_NEG"
+      numerator: "GE_ANAK"
+      denominator: "RNP_NEG"
+
+  # NOTE: each contrast above must be run TWICE (once on the 24h-only subset of samples, once on the 96h-only subset)
+
+# -----------------------------------------------------------------------------
+# Significance thresholds
+# -----------------------------------------------------------------------------
+thresholds:
+  # Part 1 (Reproduction): matches Conti et al.'s methods exactly
+  # No log2FC cutoff was reported in their methods for the DE step itself
+
+  padj: 0.05
+
+  rescue_alpha: 0.05 
+
+# -----------------------------------------------------------------------------
+# Enrichment analysis
+# -----------------------------------------------------------------------------
+enrichment:
+  # Part 1 (Reproduction): mirrors Conti et al.'s methods as closely as
+  # possible
+
+  reproduction:
+    ranking_metric: log2FoldChange
+    libraries:
+      Hallmark: "MSigDB_Hallmark_2020"
+    use_custom_senescence_geneset: true
+
+  # Part 2 (Extension): broader survey using our own standard approach
+  # Ranked by Wald stat, tested against GO:BP, KEGG, and Hallmark for a fuller pathway picture.
+  
+  extension:
+    ranking_metric: stat
+    libraries:
+      GO_BP: "GO_Biological_Process_2023"
+      KEGG: "KEGG_2021_Human"
+      Hallmark: "MSigDB_Hallmark_2020"
+
+  gsea_permutations: 1000
+  gsea_min_size: 15
+  gsea_max_size: 500

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hspc-response"
+version = "0.1.0"
+description = "Reproduction and extension of Di Micco et al. 2025 — transcriptional consequences of CRISPR-Cas9/AAV6 gene editing in HSPCs"
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+where = ["src"]

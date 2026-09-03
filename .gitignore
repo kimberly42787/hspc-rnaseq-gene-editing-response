@@ -217,14 +217,14 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Raw and processed data (not redistributed via GitHub)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep 
 
-# Data
-data/raw/
-data/processed/
-*.fastq
-*.fastq.gz
-*.fq
-*.fq.gz
-*.bam
-*.sam
-*.csv.gz
+# Environment/secrets
+.env
+
+# macOS
+.DS_Store
